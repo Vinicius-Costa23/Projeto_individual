@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    display: flex;
+    width: 100%;
+    background-color: #00341D;
+    font-family: "Montserrat";
+}
+
+
+.header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #2B3F27;
+}
+
+.logoPalmeiras img {
+    width: 150px;
+    position: absolute;
+    top: 10px;
+    left: 80px
+}
+
+.navbar_links {
+    width: 55%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: 250px;
+}
+
+.navbar_links li {
+    list-style: none;
+}
+
+.navbar_links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.navbar_links a:hover {
+    background-color: beige;
+    border-radius: 60px;
+    padding: 15px 30px 15px 30px;
+    color: #00341D;
+    transition: 0.5s;
+}
+
+.container_home {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(../images/inicio.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.container {
+    padding-top: 180px;
+    color: white;
+    padding-left: 50px;
+}
+
+#lista_titulos {
+
+    width: 190px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+
+
+.div_exibicao {
+
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    
+
+}
+
+
+#div_exibir {
+
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding-left: 400px;
+    width: 650x;
+    align-items: center;
+   
+    
+
+}
+
+.historia {
+
+
+    padding-top: 180px;
+    color: white;
+    padding-left: 300px;
+
+
+}
+
+#contato {
+
+    display: flex;
+    padding-top: 200px;
+    color: white;
+    padding-left: 100px;
+    flex-direction: column;
+    
+
+}
+
+.form_contato {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container {
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+.jogadores {
+
+   
+    display: flex;
+    width: 100%;
+    /* padding-right: 100px; */
+    padding-left: 90px;
+    flex-flow: row wrap;
+    padding-bottom: 80px;
+
+}
+
+.jogadores img {
+
+    
+    height: 140px;
+    width: 160px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px #00170c;
+    transition: 0.2s ease-in-out;
+    
+}
+.jogadores img:hover {
+
+    width: 170px;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    box-shadow: 0px 2px 2px #00170c;
+    transition: 0.2s ease-in-out;
+    
+
+} 
+
+
+
+/*tela de cadastro  */
+
+.container_cadastro {
+
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    height: 615px;
+    background-color: #00341D;
+    color: white;
+    padding-right: 80px;
+    
+    
+}
+
+
+.cadastro_direito{
+
+    padding-top: 50px;
+    padding-left: 100px;
+
+
+}
+
+.input_class {
+
+    border-radius: 10px;
+    display: flex;
+    width: 300px;
+    height: 25px;
+
+}
+
+.botao_enviar_cadastro {
+
+    height: 30px;
+    width: 100px;
+    border-radius: 30px;
+
+}
+
+.cadastro_botao_voltar {
+
+width: 100px;
+height: 40px;
+color: white;
+font-size: 20px;
+padding-left: 30px;
+padding-top: 30px;
+
+}
+
+/*tela de login */
+
+.container_login {
+
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    height: 615px;
+    background-color: #00341D;
+    color: white;
+    padding-right: 80px;
+    padding-left: 500px;
+    
+
+}
+
+
+.cadastre-se_link {
+
+    padding-left: 70px;
+    color: white;
+
+}
+
+
+.botao_enviar_login {
+
+    width: 100px;   
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+
+
+}
+
+.botao_voltar_login{
+
+width: 100%;
+padding-left: 20px;
+font-size: 20px;
+padding-top: 20px;
+text-decoration: none;
+color: white;
+
+}
+
+.area_login {
+
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    height: 615px;
+    flex-direction: column;
+    background-color: #00341D;
+    color: white;
+    /* flex-flow: row wrap; */
+    padding-right: 80px;
+
+
+}
+
+/* area do cliente */
+
+.container_cliente {
+
+   
+    padding-top: 60px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #00341D;
+    color: white;
+    flex-flow: row wrap;
+    
+}
+
+.area_cliente {
+
+padding-bottom: 100px;
+
+}
+
+
+
+.lateral_cliente {
+
+    width: 200px;
+
+
+}
+
+.cliente_botao_sair  {
+
+    
+    width: 100px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 30px;                                                              
+
+
+}
+
+.botao_voltar {
+
+    width: 100px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 30px;       
+
+
+
+}
+
+
+.cliente_botao_acompanhar {
+
+padding-top: 50px;
+color: white;
+padding-left: 20px;
+font-size: 20px;
+
+
+}
+
+.lateral_cliente {
+
+border-right: 1px solid white;
+background-color: #036440;
+
+}
+
+
+.container_dashboard {
+
+    width: 1000px;
+    height: 100%;
+    padding-left: 200px;
+    padding-top: 100px;
+
+}
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+
+<body>
+    <a href="login.html">
+        <div class="botao_voltar">Voltar</div>
+    </a>
+    <div class="container_cadastro">
+        <div class="area_cadastro">
+            <h1>Cadastro</h1> <br> <br>
+            <label>Nome Completo:</label>
+            <input id="input_nome" class="input_class" required> <br>
+            <label>Email:</label>
+            <input id="input_email" class="input_class" required> <br>
+            <label>Senha:</label>
+            <input id="input_senha" class="input_class" required> <br> <br>
+            <button class="botao_enviar_cadastro" onclick="enviar()">Enviar</button>
+        </div>
+</body>
+
+</html>
+
+<script>
+    function enviar() {
+
+
+        var cadastro = {
+            nome: input_nome.value,
+            email: input_email.value,
+            senha: input_senha.value
+        }
+
+        if (cadastro.nome == '' || cadastro.email == '' || cadastro.senha == '') {
+            alert('Campo obrigatório vazio')
+        }
+        else {
+            fetch('/usuarios/cadastrar', {
+                method: 'POST',
+                headers:{ 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(cadastro)
+            })
+            .then(res=>{
+                alert('Cadastrado com sucesso')
+            })  
+            .catch(erro=>{
+                alert('Erro')
+            })
+        }
+
+
+
+    }
+
+
+</script>

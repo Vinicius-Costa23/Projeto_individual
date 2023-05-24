@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <div class="lateral_cliente">
+        <a href="login.html">
+            <div class="cliente_botao_sair">Sair</div>
+        </a>
+        <a href="dashboard.html">
+            <div class="cliente_botao_acompanhar">Acompanhar</div>
+        </a>
+    </div>
+    <div class="container_cliente">
+        <div class="area_cliente">
+            <h1>Vote no melhor jogador da temporada</h1>
+        </div>
+        <div class="jogadores">
+            <div class="jogadores_cima"></div>
+            <div>
+                <img src="./images/dudu.png" onclick="escolher()" alt="">
+
+            </div>
+            <div>
+                <img src="./images/Veiga.png" onclick="escolher()" alt="">
+
+
+            </div>
+            <div>
+                <img src="./images/endrick.png" onclick="escolher()" alt=""> 
+
+
+            </div>
+            <div>
+                <img src="./images/gabrielMenino.png" onclick="escolher()" alt=""> 
+
+            </div>
+            <div>
+                <img src="./images/Luan.png" onclick="escolher()" alt=""> 
+
+            </div>
+            <div>
+                <img src="./images/gustavoGomez.png" onclick="escolher()" alt=""> 
+
+            </div>
+            <div class="jogadores baixo">
+                <div>
+                    <img src="./images/Weverton.png" onclick="escolher()" alt="">
+
+                </div>
+                <div>
+                    <img src="./images/Piquerez.png" onclick="escolher()" alt=""> 
+
+                </div>
+                <div>
+                    <img src="./images/rony.png" onclick="escolher()" alt=""> 
+
+                </div>
+                <div>
+                   <img src="./images/marcosRocha.png" onclick="escolher()" alt=""> 
+
+                </div>
+                <div>
+                    <img src="./images/zeRafael.png" onclick="escolher()" alt=""> 
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    function escolher() {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: "Você só pode votar uma vez!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#036400',
+            cancelButtonColor: '#d33',
+            timer: 5000,
+            confirmButtonText: 'Confirmar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Votado!',
+                    'Voto confirmado com sucesso!',
+                    'success'
+                )
+            }
+        });
+    }
+
+</script>

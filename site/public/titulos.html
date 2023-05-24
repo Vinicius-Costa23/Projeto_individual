@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+
+<body>
+    <div class="container_header">
+        <section id="inicio">
+            <div class="header" id="header">
+                <div class="logoPalmeiras">
+                    <img src="images/palmeiras-logo-0.png" alt="Logo do Palmeiras">
+                </div>
+                <ul class="navbar_links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./titulos.html">Títulos</a></li>
+                    <li><a href="./historia.html">Historia</a></li>
+                    <li><a href="./login.html">Login</a></li>
+                    <li><a href="./contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <div class="container">
+        <div>
+            <h2>Principais títulos <br> <br></h2>
+            <select id="lista_titulos" onchange="mudar_camp()">
+                <option value="">Selecione um titulo</option>
+                <option value="copaRio">Copa Rio</option>
+                <option value="Libertadores">Libertadores </option>
+                <option value="Brasileirao">Campeonato Brasileiro</option>
+                <option value="CopaBR">Copa do Brasil</option>
+                <option value="Paulista">Campeonato Paulista</option>
+                <option value="Recopa">Recopa Sul-Americana</option>
+                <option value="superCopa">Supercopa do Brasil</option>
+
+
+            </select>
+        </div>
+        <div class="div_exibicao">
+            <div id="div_exibir">
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function mudar_camp() {
+
+        var campeonato = lista_titulos.value
+
+        if (campeonato == "copaRio") {
+            div_exibir.innerHTML = `<div><h2>A Copa Rio de <b>1951</b></h2> <br>conquistada pelo Palmeiras, foi a primeira <br> competição futebolística interclubes com abrangência mundial <br> da história</div>`
+        }
+        else if (campeonato == "Libertadores") {
+            div_exibir.innerHTML = `<div><h2> 3x Campeão </h2> <br>Copa Libertadores da América de 1999 <br>
+     <br>Copa Libertadores da América de 2020 <br>
+     <br>Copa Libertadores da América de 2021 <br> </div>`
+        }
+        else if (campeonato == "Brasileirao") {
+            div_exibir.innerHTML = `<div> <h2>11x Campeão </h2> <br>
+     1960 (Taça Brasil) <br> 1967 (Taça Brasil) <br> 1967 (Torneio Roberto Gomes Pedrosa) <br> 1969 (Torneio Roberto Gomes Pedrosa) <br> 1972 Campeonato Brasileiro <br> 1973 Campeonato Brasileiro<br> 1993 Campeonato Brasileiro<br> 1994 Campeonato Brasileiro <br> 2016 Campeonato Brasileiro <br> 2018 Campeonato Brasileiro <br> 2022 Campeonato Brasileiro.</div>`
+        } else if (campeonato == "CopaBR") {
+            div_exibir.innerHTML = `<div><h2>4x Campeão </h2> <br>Campeão da Copa do Brasil de 1998 <br>
+     <br>Campeão da Copa do Brasil de 2012 <br>
+     <br>Campeão da Copa do Brasil de 2015 <br>
+     <br>Campeão da Copa do Brasil de 2020 <br></div>`
+        } else if (campeonato == "Paulista") {
+            div_exibir.innerHTML = `
+            <div>
+                <h2>25x Campeão </h2>  <br>Campeão Paulista de 1920 <br>Campeão Paulista de 1926<br>  Campeão Paulista de 1926  <br> Campeão Paulista de 1927<br> Campeão Paulista de 1932<br> Campeão Paulista de 1933<br> Campeão Paulista de 1934<br>  Campeão Paulista de 1936<br> Campeão Paulista de 1938<br> Campeão Paulista de 1940<br> Campeão Paulista de 1942<br> Campeão Paulista de 1944<br> <br> <br> 
+            </div>
+            <div>
+                Campeão Paulista de 1947<br> Campeão Paulista de 1950<br> Campeão Paulista de 1959<br> Campeão Paulista de 1963<br> Campeão Paulista de 1966<br> Campeão Paulista de 1972<br> Campeão Paulista de 1974<br> Campeão Paulista de 1976<br> Campeão Paulista de 1993<br> Campeão Paulista de 1994<br> Campeão Paulista de 1996<br> Campeão Paulista de 2008<br> Campeão Paulista de 2020<br> Campeão Paulista de 2022<br> Campeão Paulista de 2023<br>
+            </div>`
+        } else if (campeonato == "Recopa") {
+            div_exibir.innerHTML = `Campeão da Recopa Sul-Americana 2022`
+        } else if (campeonato == "superCopa") {
+            div_exibir.innerHTML = `Campeão da SuperCopa do Brasil 2023`
+        }
+
+
+    }
+
+
+</script>
