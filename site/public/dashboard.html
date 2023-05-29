@@ -1,77 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <a href="area_cliente.html">
-        <div class="botao_voltar">Voltar</div>
-    </a>
-    <div class="container_dashboard">
+  <a href="area_cliente.html">
+    <div class="botao_voltar">Voltar</div>
+  </a>
+  <div class="container_dashboard">
     <canvas id="dashboard"></canvas>
-    </div> 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
+
 </html>
 
 <script>
-const ctx = document.getElementById('dashboard');
-var jogadores = ['Dudu', 'Veiga', 'Endrick', 'Menino', 'Luan', 'Gomez', 'Weverton', 'Piquerez', 'Rony', 'Rocha', 'Ze Rafael' ]
+  var jogadores = []
 
-var votos = [50, 19, 15, 30, 40, 15, 44, 22, 18, 35, 11];
+  var votos = [];
+  const ctx = document.getElementById('dashboard');
 
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: jogadores,
-    datasets: [{
-      label: 'Votos',
-      data: votos,
-      backgroundColor: [
-      '#036439',
-      '#036427',
-      '#036419',
-      '#036410',
-      '#036400',
-      '#036405',
-      '#036415',
-      '#036425',
-      '#036435',
-      '#036438',
-      '#036440',
+  // var grafico = new Chart(ctx, {
+  //   type: 'bar',
+  //   data: {
+  //   labels: jogadores,
+  //     datasets: [{
+  //       label: 'Votos',
+  //       data: votos,
+  //       backgroundColor: [
+  //         '#036439',
+  //         '#036427',
+  //         '#036419',
+  //         '#036410',
+  //         '#036400',
+  //         '#036405',
+  //         '#036415',
+  //         '#036425',
+  //         '#036435',
+  //         '#036438',
+  //         '#036440',
 
-    ],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-            color: "white",
-            font: {
-                Weight: 'bold'
-        }
+  //       ],
+  //       borderWidth: 1
+  //     }]
+  //   },
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: true,
+  //           ticks: {
+  //           color: "white",
+  //             font: {
+  //             Weight: 'bold'
+  //           }
+  //         }
+  //       },
+  //       x: {
+  //         ticks: {
+  //           color: "white",
+  //             font: {
+  //             Weight: 'bold'
+  //           }
+  //         }
+  //       }
+
+  //     }
+  //   }
+  // }
+  // );
+
+
+
+  let proximaAtualizacao;
+
+  window.onload = obterDadosGraficos();
+
+  function obterDadosGraficos() {
+    obterDadosGrafico()
+  }
+  
+
+  function obterDadosGrafico() {
+
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/grafico/atualizar_grafico`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGrafico(resposta);
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
       }
-    },
-    x: {
-        ticks: {
-          color: "white",
-            font: {
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+  }
+
+  // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+  // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+  // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+  function plotarGrafico(resposta) {
+
+    console.log('iniciando plotagem do gráfico...');
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [{
+        label: 'Votos',
+        data: [],
+        backgroundColor: [
+          '#036439',
+          '#036427',
+          '#036419',
+          '#036410',
+          '#036400',
+          '#036405',
+          '#036415',
+          '#036425',
+          '#036435',
+          '#036438',
+          '#036440',
+
+        ],
+        borderWidth: 1
+      }],
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: "white",
+              font: {
                 Weight: 'bold'
+              }
+            }
+          },
+          x: {
+            ticks: {
+              color: "white",
+              font: {
+                Weight: 'bold'
+              }
             }
           }
         }
-    
+      }
+    };
+
+
+    var maximoVotos = resposta[0]
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      if (registro.qtdeVotos >= maximoVotos.qtdeVotos) {
+        maximoVotos = registro
+      }
     }
+
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
+
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      labels.push(registro.nomeJogador);
+      dados.datasets[0].data.push(registro.qtdeVotos);
+      console.log(registro)
+
+    }
+    console.log(`jogador máximo de votos: ${maximoVotos.nomeJogador} votos ${maximoVotos.qtdeVotos}`)
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+      type: 'bar',
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(
+      document.getElementById('dashboard'),
+      config
+    );
   }
-}
-);
+
+
+
+
+
+
 
 
 

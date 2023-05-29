@@ -20,7 +20,7 @@ function entrar(req, res) {
                     console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
 
                     if (resultado.length == 1) {
-                        console.log(resultado);
+                        console.log(resultado)
                         res.json(resultado[0]);
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -74,7 +74,39 @@ function cadastrar(req, res) {
     }
 }
 
+
+function votar(req, res){
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var idUsuario = req.body.idUsuario;
+    var fkJogador = req.body.fkJogador;
+
+    // Faça as validações dos valores
+    if (idUsuario == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (fkJogador == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.votar(idUsuario, fkJogador)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
 module.exports = {
     entrar,
-    cadastrar
+    cadastrar,
+    votar
 }

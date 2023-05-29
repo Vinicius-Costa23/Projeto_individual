@@ -16,7 +16,17 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucao);
 }
 
+function votar(idUsuario, fkJogador) {
+    var instrucao = `
+     UPDATE usuario SET fkJogador = ${fkJogador} WHERE idUsuario = ${idUsuario};
+        `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
 module.exports = {
     entrar,
-    cadastrar
+    cadastrar,
+    votar
 };

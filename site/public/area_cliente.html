@@ -26,50 +26,50 @@
         <div class="jogadores">
             <div class="jogadores_cima"></div>
             <div>
-                <img src="./images/dudu.png" onclick="escolher()" alt="">
+                <img src="./images/dudu.png" onclick="escolher(1)" alt="">
 
             </div>
             <div>
-                <img src="./images/Veiga.png" onclick="escolher()" alt="">
-
-
-            </div>
-            <div>
-                <img src="./images/endrick.png" onclick="escolher()" alt=""> 
+                <img src="./images/Veiga.png" onclick="escolher(2)" alt="">
 
 
             </div>
             <div>
-                <img src="./images/gabrielMenino.png" onclick="escolher()" alt=""> 
+                <img src="./images/endrick.png" onclick="escolher(3)" alt="">
+
 
             </div>
             <div>
-                <img src="./images/Luan.png" onclick="escolher()" alt=""> 
+                <img src="./images/gabrielMenino.png" onclick="escolher(4)" alt="">
 
             </div>
             <div>
-                <img src="./images/gustavoGomez.png" onclick="escolher()" alt=""> 
+                <img src="./images/Luan.png" onclick="escolher(5)" alt="">
+
+            </div>
+            <div>
+                <img src="./images/gustavoGomez.png" onclick="escolher(6)" alt="">
 
             </div>
             <div class="jogadores baixo">
                 <div>
-                    <img src="./images/Weverton.png" onclick="escolher()" alt="">
+                    <img src="./images/Weverton.png" onclick="escolher(7)" alt="">
 
                 </div>
                 <div>
-                    <img src="./images/Piquerez.png" onclick="escolher()" alt=""> 
+                    <img src="./images/Piquerez.png" onclick="escolher(8)" alt="">
 
                 </div>
                 <div>
-                    <img src="./images/rony.png" onclick="escolher()" alt=""> 
+                    <img src="./images/rony.png" onclick="escolher(9)" alt="">
 
                 </div>
                 <div>
-                   <img src="./images/marcosRocha.png" onclick="escolher()" alt=""> 
+                    <img src="./images/marcosRocha.png" onclick="escolher(10)" alt="">
 
                 </div>
                 <div>
-                    <img src="./images/zeRafael.png" onclick="escolher()" alt=""> 
+                    <img src="./images/zeRafael.png" onclick="escolher(11)" alt="">
 
                 </div>
 
@@ -82,7 +82,7 @@
 
 
 <script>
-    function escolher() {
+    function escolher(idJogador) {
         Swal.fire({
             title: 'Tem certeza?',
             text: "Você só pode votar uma vez!",
@@ -91,16 +91,57 @@
             confirmButtonColor: '#036400',
             cancelButtonColor: '#d33',
             timer: 5000,
-            confirmButtonText: 'Confirmar!'
+            confirmButtonText: 'Confirmar'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Votado!',
-                    'Voto confirmado com sucesso!',
-                    'success'
-                )
-            }
-        });
-    }
+                fetch("/usuarios/votar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        idUsuario: Number(sessionStorage.getItem("ID_USUARIO")),
+                        fkJogador: idJogador
+                    })
+                }).then(function (resposta) {
+                    console.log("ESTOU NO THEN DO entrar()!")
 
+                    if (resposta.ok) {
+                        console.log(resposta);
+
+                        resposta.json().then(json => {
+                            console.log(json);
+                            console.log(JSON.stringify(json));
+                            Swal.fire(
+                                'Votado!',
+                                'Voto confirmado com sucesso!',
+                                'success'
+                            )
+                            setTimeout(function () {
+                                window.location = "./dashboard.html";
+                            }, 1000); // apenas para exibir o loading
+
+                        });
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Ocorreu algum erro!'
+                        })
+
+                        resposta.text().then(texto => {
+                            console.error(texto);
+
+                        });
+                    }
+
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
+
+                return false;
+            }
+        })
+    }
 </script>

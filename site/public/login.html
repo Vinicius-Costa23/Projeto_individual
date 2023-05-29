@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <div class="container_header">
         <section id="inicio">
             <div class="header" id="header">
@@ -40,20 +41,80 @@
 </html>
 
 <script>
-function entrar_login() {
-    var login = {
-     email: input_email.value,
-     senha: input_senha.value 
+    function entrar_login() {
+        var login = {
+            email: input_email.value,
+            senha: input_senha.value
+        }
+
+        if (login.email == "" || login.senha == "") {
+            alert("Campo obrigatório vazio");
+            return false;
+        }
+
+
+        console.log("FORM LOGIN: ", login.email);
+        console.log("FORM SENHA: ", login.senha);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: login.email,
+                senhaServer: login.senha
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+
+                    setTimeout(function () {
+                        window.location = "./area_cliente.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                Swal.fire({
+                    
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'E-mail ou senha invalidos!'
+                })
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
 
-    
 
 
-    } 
+
+
+
+
 
 
 
 
 </script>
-
-
