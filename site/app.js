@@ -7,7 +7,7 @@ var path = require("path");
 var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
 
 var app = express();
-
+// configurando as rotas do backend
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var atualizarRouter = require("./src/routes/grafico");
@@ -24,7 +24,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/grafico", atualizarRouter);
 
 app.listen(PORTA, function () {
-    console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
+    console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://sep.com:${PORTA} \n
     Você está rodando sua aplicação em Ambiente de ${process.env.AMBIENTE_PROCESSO} \n
     \t\tSe "desenvolvimento", você está se conectando ao banco LOCAL (MySQL Workbench). \n
     \t\tSe "producao", você está se conectando ao banco REMOTO (SQL Server em nuvem Azure) \n

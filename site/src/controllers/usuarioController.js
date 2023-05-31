@@ -105,6 +105,7 @@ function votar(req, res){
             );
     }
 }
+// exportando funções da controller
 module.exports = {
     entrar,
     cadastrar,

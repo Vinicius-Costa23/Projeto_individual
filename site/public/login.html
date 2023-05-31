@@ -55,8 +55,8 @@
 
         console.log("FORM LOGIN: ", login.email);
         console.log("FORM SENHA: ", login.senha);
-
-        fetch("/usuarios/autenticar", {
+        // comunicando backend com frontend
+        fetch("/usuarios/autenticar", { 
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

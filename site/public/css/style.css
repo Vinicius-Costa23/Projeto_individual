@@ -217,7 +217,7 @@ body {
 
 }
 
-.botao_enviar_cadastro {
+.botao_enviar {
 
     height: 30px;
     width: 100px;
@@ -387,3 +387,11 @@ background-color: #036440;
 
 }
 
+.mostrar_jogador {
+
+margin-top: 39px;
+padding-right: 20px;  
+color: white;
+font-size: 15px;
+
+}

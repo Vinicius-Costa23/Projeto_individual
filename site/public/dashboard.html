@@ -17,6 +17,8 @@
     <canvas id="dashboard"></canvas>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <div class="mostrar_jogador"  id="exibir"></div>
+
 </body>
 
 </html>
@@ -175,10 +177,16 @@
       }
     }
 
+    var max = Math.max(resposta.qtdeVotos)
+    console.log(max);
+    console.log(resposta);
+
+    exibir.innerHTML = `Mais votado: <br> ${maximoVotos.nomeJogador}, 
+        ${maximoVotos.qtdeVotos} votos `; 
+
     console.log('----------------------------------------------')
     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
     console.log(resposta)
-
 
     // Inserindo valores recebidos em estrutura para plotar o gráfico
 

@@ -42,10 +42,40 @@
                     <label>Mensagem*</label> 
                     <textarea class="ipt_msg_contato" id="ipt_mensagem" cols="30" rows="5" required></textarea> <br>
                 </form>
-                <input class="btn_enviar_mensagem" type="submit" value="Enviar mensagem" onclick="enviarMensagem()">
+                <input class="botao_enviar" type="submit" value="Enviar" onclick="enviarMensagem()">
             </div>
         </div>
     </section>
 </body>
 
 </html>
+
+<script>
+function enviarMensagem() {
+
+    var contato = {
+        nome: ipt_nome.value,
+        telefone: ipt_telefone.value,
+        email: ipt_email.value,
+        mensagem: ipt_mensagem.value
+    }
+
+    if(contato.nome == "" || contato.telefone == "" || contato.email == "" || contato.mensagem == ""){
+        alert("Campo obrigatório vazio")
+        
+    }
+
+    else {
+        alert("mensagem enviada")
+    }
+
+
+
+
+
+
+}
+
+
+
+</script>
