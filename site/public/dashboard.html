@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -28,56 +28,6 @@
 
   var votos = [];
   const ctx = document.getElementById('dashboard');
-
-  // var grafico = new Chart(ctx, {
-  //   type: 'bar',
-  //   data: {
-  //   labels: jogadores,
-  //     datasets: [{
-  //       label: 'Votos',
-  //       data: votos,
-  //       backgroundColor: [
-  //         '#036439',
-  //         '#036427',
-  //         '#036419',
-  //         '#036410',
-  //         '#036400',
-  //         '#036405',
-  //         '#036415',
-  //         '#036425',
-  //         '#036435',
-  //         '#036438',
-  //         '#036440',
-
-  //       ],
-  //       borderWidth: 1
-  //     }]
-  //   },
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true,
-  //           ticks: {
-  //           color: "white",
-  //             font: {
-  //             Weight: 'bold'
-  //           }
-  //         }
-  //       },
-  //       x: {
-  //         ticks: {
-  //           color: "white",
-  //             font: {
-  //             Weight: 'bold'
-  //           }
-  //         }
-  //       }
-
-  //     }
-  //   }
-  // }
-  // );
-
 
 
   let proximaAtualizacao;
@@ -177,9 +127,6 @@
       }
     }
 
-    var max = Math.max(resposta.qtdeVotos)
-    console.log(max);
-    console.log(resposta);
 
     exibir.innerHTML = `Mais votado: <br> ${maximoVotos.nomeJogador}, 
         ${maximoVotos.qtdeVotos} votos `; 

@@ -26,6 +26,7 @@ body {
     background-color: #2B3F27;
 }
 
+/* tela inicio  */
 .logoPalmeiras img {
     width: 150px;
     position: absolute;
@@ -38,8 +39,8 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    margin-left: 250px;
+    justify-content: space-evenly;
+    margin-left: 450px;
 }
 
 .navbar_links li {
@@ -68,6 +69,8 @@ body {
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+
+/* tela titulos */
 
 .container {
     padding-top: 180px;
@@ -111,14 +114,12 @@ body {
 
 }
 
+/* tela historia */
+
 .historia {
-
-
     padding-top: 180px;
     color: white;
     padding-left: 300px;
-
-
 }
 
 #contato {
@@ -129,7 +130,6 @@ body {
     padding-left: 100px;
     flex-direction: column;
     
-
 }
 
 .form_contato {
@@ -146,41 +146,6 @@ body {
     height: 100%;
     flex-direction: column;
 }
-.jogadores {
-
-   
-    display: flex;
-    width: 100%;
-    /* padding-right: 100px; */
-    padding-left: 90px;
-    flex-flow: row wrap;
-    padding-bottom: 80px;
-
-}
-
-.jogadores img {
-
-    
-    height: 140px;
-    width: 160px;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0px 2px 2px #00170c;
-    transition: 0.2s ease-in-out;
-    
-}
-.jogadores img:hover {
-
-    width: 170px;
-    align-items: center;
-    border-radius: 8px;
-    border: 1px solid #fff;
-    box-shadow: 0px 2px 2px #00170c;
-    transition: 0.2s ease-in-out;
-    
-
-} 
-
 
 
 /*tela de cadastro  */
@@ -196,7 +161,6 @@ body {
     color: white;
     padding-right: 80px;
     
-    
 }
 
 
@@ -204,7 +168,6 @@ body {
 
     padding-top: 50px;
     padding-left: 100px;
-
 
 }
 
@@ -303,6 +266,38 @@ color: white;
 
 /* area do cliente */
 
+.jogadores {   
+    display: flex;
+    width: 100%;
+    padding-left: 90px;
+    flex-flow: row wrap;
+    padding-bottom: 80px;
+
+}
+
+.jogadores img {
+
+    
+    height: 140px;
+    width: 160px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px #00170c;
+    transition: 0.2s ease-in-out;
+    
+}
+.jogadores img:hover {
+
+    width: 170px;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    box-shadow: 0px 2px 2px #00170c;
+    transition: 0.2s ease-in-out;
+    
+
+} 
+
 .container_cliente {
 
    
@@ -355,8 +350,6 @@ padding-bottom: 100px;
     padding-left: 30px;
     padding-top: 30px;       
 
-
-
 }
 
 
@@ -373,7 +366,7 @@ font-size: 20px;
 .lateral_cliente {
 
 border-right: 1px solid white;
-background-color: #036440;
+background-color: #07663d;
 
 }
 
@@ -395,3 +388,4 @@ color: white;
 font-size: 15px;
 
 }
+

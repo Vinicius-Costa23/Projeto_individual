@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="./CSS/style.css">
+
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <a href="login.html">
         <div class="botao_voltar">Voltar</div>
     </a>
@@ -19,7 +21,7 @@
             <label>Nome Completo:</label>
             <input id="input_nome" class="input_class" required> <br>
             <label>Email:</label>
-            <input id="input_email" class="input_class" required> <br>
+            <input id="input_email" type="email" class="input_class" required> <br>
             <label>Senha:</label>
             <input id="input_senha" type="password" class="input_class" required> <br> <br>
             <button class="botao_enviar" onclick="enviar()">Enviar</button>
@@ -30,7 +32,7 @@
 
 <script>
     function enviar() {
-
+      
 
         var cadastro = {
             nome: input_nome.value,
@@ -44,17 +46,24 @@
         else {
             fetch('/usuarios/cadastrar', {
                 method: 'POST',
-                headers:{ 
+                headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(cadastro)
+               /* Pegando corpo do cadastro e transformando em json */
             })
-            .then(res=>{
-                alert('Cadastrado com sucesso')
-            })  
-            .catch(erro=>{
-                alert('Erro')
-            })
+                .then(res => {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Cadastro concluído com sucesso',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                })
+                .catch(erro => {
+                    alert('Erro')
+                })
         }
 
 

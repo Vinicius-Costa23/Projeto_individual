@@ -19,7 +19,7 @@ function atualizarGrafico(req, res) {
         ).catch(
             function (erro) {
                 console.log(erro);
-                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                console.log("\nHouve um erro ao realizar select na dashboard! Erro: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             }
         );

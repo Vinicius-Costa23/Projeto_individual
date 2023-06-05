@@ -4,11 +4,11 @@ var sessoes = [];
 
 
 function entrar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var email = req.body.emailUser;
+    var senha = req.body.senhaUser;
 
     if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu email está indefinido!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {

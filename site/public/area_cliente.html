@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Área do usuário</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -85,12 +85,12 @@
     function escolher(idJogador) {
         Swal.fire({
             title: 'Tem certeza?',
-            text: "Você só pode votar uma vez!",
+            text: "Você só pode votar em um jogador por vez!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#036400',
             cancelButtonColor: '#d33',
-            timer: 5000,
+            timer: 10000,
             confirmButtonText: 'Confirmar'
         }).then((result) => {
             if (result.isConfirmed) {
